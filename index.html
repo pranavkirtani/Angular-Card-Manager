@@ -1,0 +1,10 @@
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="dist/css/cardManager.css"  >
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="dist/javascript/cardManager.js"></script>
+<script src="testController.js"></script>
+<body ng-app="myApp">
+    <div ng-controller="testController as cntrl">
+    <card-manager url="/data" onopen="cntrl.open" ondelete="cntrl.delete" onprint="cntrl.print"></card-manager>
+    </div>
+</body>

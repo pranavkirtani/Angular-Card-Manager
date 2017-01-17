@@ -1,0 +1,19 @@
+.card{
+    padding: 2%;
+    border:"#eee";
+    font-size: 120%
+}
+.avatar{
+        width: 14%;
+}
+
+.card-description{
+  overflow:hidden
+}
+.overlay{
+    height: 10%;
+    width: 22%;
+    font-size: 50%;
+    color: #f3eaea;
+    font-weight: bold;
+}

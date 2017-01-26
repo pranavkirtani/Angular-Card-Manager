@@ -1,10 +1,13 @@
 .card{
     padding: 2%;
     border:"#eee";
-    font-size: 120%
+    font-size: 120%;
+  
 }
 .avatar{
         width: 14%;
+        background-image: url("../../dist/images/defualt.png");
+        background-repeat:round;
 }
 
 .card-description{
@@ -16,4 +19,7 @@
     font-size: 60%;
     color: #f3eaea;
     font-weight: bold;
+}
+.card-body{
+     color:'#ffffff';
 }

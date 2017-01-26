@@ -1,33 +1,15 @@
 var app=angular.module("cardManager",[]);
-app.controller('cardController',function($scope,ajaxService,$window){
+app.controller('cardController',function($scope,ajaxService,$window,$timeout){
        var self=this;
     this.$onInit=function(){
           if(this.mydata){
-               var items=this.mydata;
-            items.forEach(function(item){
-             if(!item["font_color"]){
-                item["font_color"]="white";
-            }
-            if(!item.icon){
-            item.icon="dist/images/defualt.png"
-            }
-        });
-             $scope.items=items;
+             $scope.items=this.mydata;
 
           }
           else if(this.url){
 
-               ajaxService.getData(this.url).then(function(data){
-            var items=JSON.parse(data);
-            items.forEach(function(item){
-             if(!item["font_color"]){
-                item["font_color"]="white";
-            }
-            if(!item.icon){
-            item.icon="dist/images/defualt.png"
-            }
-        });
-             $scope.items=items;
+            ajaxService.getData(this.url).then(function(data){
+                $scope.items=JSON.parse(data);
         },function(){
 
         });
@@ -41,13 +23,18 @@ app.controller('cardController',function($scope,ajaxService,$window){
             renderHeight();
         });
     }
-   
+ 
 
     $scope.open=function(){
           self.onopen()           
     }
-    $scope.delete=function(){
-         self.ondelete() 
+    $scope.delete=function(index){
+         $scope.items.splice(index,1);
+        self.ondelete();
+        $timeout(function(){
+            renderHeight();
+        },0,false);
+       
     }
     $scope.print=function(){
         if(!self.onprint){

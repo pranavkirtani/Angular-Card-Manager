@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <div class="row">
         <div  ng-repeat="item in items track by $index"  class="card col-sm-6  col-xs-12  col-md-3  col-lg-3 " title={{item.title}}  card-height="renderHeight()">
-            <div ng-init="opacity=0" ng-mouseenter="opacity=1" ng-mouseleave="opacity=0" class="card-body" style="color:{{item.font_color}};background-image: url({{item.background_image}});background-repeat: round;">
+            <div ng-init="opacity=0" ng-mouseenter="opacity=1" ng-mouseleave="opacity=0" class="card-body" ng-style="item.font_color ?{'color':item.font_color}:{'color':'#ffffff'}" style="background-image: url({{item.background_image}});background-repeat: round;">
               <div  style="opacity: {{opacity}}">
                   <span>
                       <button ng-click="open()" class="overlay btn-success">Open</button>
-                      <button ng-click="delete()" class="overlay btn-danger">Delete</button>
+                      <button ng-click="delete($index)" class="overlay btn-danger">Delete</button>
                       <button ng-click="print()" class="overlay btn-info">Print</button>
                   </span>
               </div>
